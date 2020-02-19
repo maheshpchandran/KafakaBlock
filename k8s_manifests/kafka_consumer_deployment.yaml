@@ -1,0 +1,33 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: kbsconsumer.deploy
+spec:
+  selector:
+    matchLabels:
+      app: kafka_s
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: kafka_s
+    spec:
+      containers:
+      - name: app
+        image: maheshnair/blockakafka
+        env:
+          - name: SOCKET_URL
+            value: 'wss://ws.blockchain.info/inv'
+          - name: KAFKA_ADDRESS
+            value: 'kafkaakfak-cp-kafka-headless.default.svc.cluster.local:9092'
+          - name: KSQL_URL
+            value: ""
+          - name: REDIS_HOST
+            value: 'redis-deploy'
+          - name: REDIS_PORT
+            value: ''
+          - name: REDIS_PASSWORD
+            value: ''
+        command: ["/usr/local/bin/python"]
+        args: ["Consumer_transformer.py"]
+

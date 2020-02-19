@@ -1,0 +1,7 @@
+Steps to Run
+
+Using skaffold ( if kubectl is setup)
+
+Navigate to the directory
+
+# skaffold dev

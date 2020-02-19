@@ -1,0 +1,15 @@
+apiVersion: skaffold/v2alpha3
+kind: Config
+metadata:
+  name: blockakafka
+build:
+  artifacts:
+  - image: maheshnair/blockakafka
+deploy:
+  kubectl:
+    manifests:
+#    - k8s_manifests/kafka_producer_deployment.yaml
+#    - k8s_manifests/kafka_consumer_deployment.yaml
+    - k8s_manifests/test.yaml
+
+
